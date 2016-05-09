@@ -1,0 +1,6 @@
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\bin\Debug\wcfservice.dll.config
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\bin\Debug\wcfservice.dll
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\bin\Debug\wcfservice.pdb
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\obj\Debug\wcfservice.csprojResolveAssemblyReference.cache
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\obj\Debug\wcfservice.dll
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\wcfservice\obj\Debug\wcfservice.pdb

@@ -1,0 +1,6 @@
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\bin\Debug\testservice.exe.config
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\bin\Debug\testservice.exe
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\bin\Debug\testservice.pdb
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\obj\Debug\testservice.csprojResolveAssemblyReference.cache
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\obj\Debug\testservice.exe
+C:\Users\Thomas Van Havere\Dropbox\Masplay app\wcfservice\testservice\obj\Debug\testservice.pdb
