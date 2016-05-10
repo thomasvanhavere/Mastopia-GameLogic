@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnoneH = new System.Windows.Forms.Button();
             this.lblmeat = new System.Windows.Forms.Label();
@@ -80,6 +81,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpgradeResto = new System.Windows.Forms.Button();
             this.lbCooking = new System.Windows.Forms.ListBox();
+            this.lbShips = new System.Windows.Forms.ListBox();
+            this.btnminship = new System.Windows.Forms.Button();
+            this.btnaddship = new System.Windows.Forms.Button();
+            this.GameTime = new System.Windows.Forms.Timer(this.components);
+            this.lblGameTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbstatistics.SuspendLayout();
             this.gbfarm.SuspendLayout();
@@ -332,6 +338,7 @@
             this.btnFarmUpgrade.TabIndex = 1;
             this.btnFarmUpgrade.Text = "Upgrade Farm";
             this.btnFarmUpgrade.UseVisualStyleBackColor = true;
+            this.btnFarmUpgrade.Click += new System.EventHandler(this.btnFarmUpgrade_Click);
             // 
             // lbltiles
             // 
@@ -344,13 +351,16 @@
             // 
             // gbharbor
             // 
+            this.gbharbor.Controls.Add(this.btnaddship);
+            this.gbharbor.Controls.Add(this.btnminship);
+            this.gbharbor.Controls.Add(this.lbShips);
             this.gbharbor.Controls.Add(this.lblLvlHarbour);
             this.gbharbor.Controls.Add(this.btnUpgradeHarbour);
             this.gbharbor.Controls.Add(this.btnBuyShip);
             this.gbharbor.Controls.Add(this.lblShips);
             this.gbharbor.Location = new System.Drawing.Point(549, 60);
             this.gbharbor.Name = "gbharbor";
-            this.gbharbor.Size = new System.Drawing.Size(211, 186);
+            this.gbharbor.Size = new System.Drawing.Size(240, 186);
             this.gbharbor.TabIndex = 3;
             this.gbharbor.TabStop = false;
             this.gbharbor.Text = "Harbour";
@@ -358,7 +368,7 @@
             // lblLvlHarbour
             // 
             this.lblLvlHarbour.AutoSize = true;
-            this.lblLvlHarbour.Location = new System.Drawing.Point(165, 154);
+            this.lblLvlHarbour.Location = new System.Drawing.Point(185, 154);
             this.lblLvlHarbour.Name = "lblLvlHarbour";
             this.lblLvlHarbour.Size = new System.Drawing.Size(32, 13);
             this.lblLvlHarbour.TabIndex = 22;
@@ -375,12 +385,13 @@
             // 
             // btnBuyShip
             // 
-            this.btnBuyShip.Location = new System.Drawing.Point(9, 110);
+            this.btnBuyShip.Location = new System.Drawing.Point(9, 120);
             this.btnBuyShip.Name = "btnBuyShip";
-            this.btnBuyShip.Size = new System.Drawing.Size(188, 23);
+            this.btnBuyShip.Size = new System.Drawing.Size(225, 23);
             this.btnBuyShip.TabIndex = 6;
             this.btnBuyShip.Text = "Buy Ship";
             this.btnBuyShip.UseVisualStyleBackColor = true;
+            this.btnBuyShip.Click += new System.EventHandler(this.btnBuyShip_Click);
             // 
             // lblShips
             // 
@@ -416,7 +427,7 @@
             this.gbResto.Controls.Add(this.lbCooking);
             this.gbResto.Location = new System.Drawing.Point(12, 252);
             this.gbResto.Name = "gbResto";
-            this.gbResto.Size = new System.Drawing.Size(459, 294);
+            this.gbResto.Size = new System.Drawing.Size(459, 259);
             this.gbResto.TabIndex = 4;
             this.gbResto.TabStop = false;
             this.gbResto.Text = "Restaurants";
@@ -424,7 +435,7 @@
             // lblLvlResto
             // 
             this.lblLvlResto.AutoSize = true;
-            this.lblLvlResto.Location = new System.Drawing.Point(261, 265);
+            this.lblLvlResto.Location = new System.Drawing.Point(261, 217);
             this.lblLvlResto.Name = "lblLvlResto";
             this.lblLvlResto.Size = new System.Drawing.Size(32, 13);
             this.lblLvlResto.TabIndex = 21;
@@ -594,7 +605,7 @@
             // 
             // btnUpgradeResto
             // 
-            this.btnUpgradeResto.Location = new System.Drawing.Point(6, 260);
+            this.btnUpgradeResto.Location = new System.Drawing.Point(6, 212);
             this.btnUpgradeResto.Name = "btnUpgradeResto";
             this.btnUpgradeResto.Size = new System.Drawing.Size(249, 23);
             this.btnUpgradeResto.TabIndex = 2;
@@ -606,14 +617,58 @@
             this.lbCooking.FormattingEnabled = true;
             this.lbCooking.Location = new System.Drawing.Point(320, 19);
             this.lbCooking.Name = "lbCooking";
-            this.lbCooking.Size = new System.Drawing.Size(120, 264);
+            this.lbCooking.Size = new System.Drawing.Size(120, 212);
             this.lbCooking.TabIndex = 0;
+            // 
+            // lbShips
+            // 
+            this.lbShips.FormattingEnabled = true;
+            this.lbShips.Location = new System.Drawing.Point(96, 15);
+            this.lbShips.Name = "lbShips";
+            this.lbShips.Size = new System.Drawing.Size(138, 43);
+            this.lbShips.TabIndex = 23;
+            // 
+            // btnminship
+            // 
+            this.btnminship.Location = new System.Drawing.Point(9, 94);
+            this.btnminship.Name = "btnminship";
+            this.btnminship.Size = new System.Drawing.Size(225, 23);
+            this.btnminship.TabIndex = 24;
+            this.btnminship.Text = "subtract one ship";
+            this.btnminship.UseVisualStyleBackColor = true;
+            this.btnminship.Click += new System.EventHandler(this.btnminship_Click);
+            // 
+            // btnaddship
+            // 
+            this.btnaddship.Location = new System.Drawing.Point(9, 67);
+            this.btnaddship.Name = "btnaddship";
+            this.btnaddship.Size = new System.Drawing.Size(225, 23);
+            this.btnaddship.TabIndex = 25;
+            this.btnaddship.Text = "Add ship to fish";
+            this.btnaddship.UseVisualStyleBackColor = true;
+            this.btnaddship.Click += new System.EventHandler(this.btnaddship_Click);
+            // 
+            // GameTime
+            // 
+            this.GameTime.Enabled = true;
+            this.GameTime.Interval = 1000;
+            this.GameTime.Tick += new System.EventHandler(this.GameTime_Tick);
+            // 
+            // lblGameTime
+            // 
+            this.lblGameTime.AutoSize = true;
+            this.lblGameTime.Location = new System.Drawing.Point(18, 524);
+            this.lblGameTime.Name = "lblGameTime";
+            this.lblGameTime.Size = new System.Drawing.Size(64, 13);
+            this.lblGameTime.TabIndex = 5;
+            this.lblGameTime.Text = "GameTime :";
             // 
             // frmMastopia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 558);
+            this.Controls.Add(this.lblGameTime);
             this.Controls.Add(this.gbResto);
             this.Controls.Add(this.gbharbor);
             this.Controls.Add(this.gbfarm);
@@ -633,6 +688,7 @@
             this.gbResto.ResumeLayout(false);
             this.gbResto.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -690,6 +746,11 @@
         private System.Windows.Forms.Button btnUpgradeResto;
         private System.Windows.Forms.ListBox lbCooking;
         private System.Windows.Forms.Button BtnoneH;
+        private System.Windows.Forms.Button btnaddship;
+        private System.Windows.Forms.Button btnminship;
+        private System.Windows.Forms.ListBox lbShips;
+        private System.Windows.Forms.Timer GameTime;
+        private System.Windows.Forms.Label lblGameTime;
     }
 }
 
