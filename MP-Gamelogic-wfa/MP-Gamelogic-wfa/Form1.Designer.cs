@@ -55,6 +55,9 @@
             this.btnFarmUpgrade = new System.Windows.Forms.Button();
             this.lbltiles = new System.Windows.Forms.Label();
             this.gbharbor = new System.Windows.Forms.GroupBox();
+            this.btnaddship = new System.Windows.Forms.Button();
+            this.btnminship = new System.Windows.Forms.Button();
+            this.lbShips = new System.Windows.Forms.ListBox();
             this.lblLvlHarbour = new System.Windows.Forms.Label();
             this.btnUpgradeHarbour = new System.Windows.Forms.Button();
             this.btnBuyShip = new System.Windows.Forms.Button();
@@ -81,9 +84,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpgradeResto = new System.Windows.Forms.Button();
             this.lbCooking = new System.Windows.Forms.ListBox();
-            this.lbShips = new System.Windows.Forms.ListBox();
-            this.btnminship = new System.Windows.Forms.Button();
-            this.btnaddship = new System.Windows.Forms.Button();
             this.GameTime = new System.Windows.Forms.Timer(this.components);
             this.lblGameTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -365,6 +365,34 @@
             this.gbharbor.TabStop = false;
             this.gbharbor.Text = "Harbour";
             // 
+            // btnaddship
+            // 
+            this.btnaddship.Location = new System.Drawing.Point(9, 67);
+            this.btnaddship.Name = "btnaddship";
+            this.btnaddship.Size = new System.Drawing.Size(225, 23);
+            this.btnaddship.TabIndex = 25;
+            this.btnaddship.Text = "Add ship to fish";
+            this.btnaddship.UseVisualStyleBackColor = true;
+            this.btnaddship.Click += new System.EventHandler(this.btnaddship_Click);
+            // 
+            // btnminship
+            // 
+            this.btnminship.Location = new System.Drawing.Point(9, 94);
+            this.btnminship.Name = "btnminship";
+            this.btnminship.Size = new System.Drawing.Size(225, 23);
+            this.btnminship.TabIndex = 24;
+            this.btnminship.Text = "subtract one ship";
+            this.btnminship.UseVisualStyleBackColor = true;
+            this.btnminship.Click += new System.EventHandler(this.btnminship_Click);
+            // 
+            // lbShips
+            // 
+            this.lbShips.FormattingEnabled = true;
+            this.lbShips.Location = new System.Drawing.Point(96, 15);
+            this.lbShips.Name = "lbShips";
+            this.lbShips.Size = new System.Drawing.Size(138, 43);
+            this.lbShips.TabIndex = 23;
+            // 
             // lblLvlHarbour
             // 
             this.lblLvlHarbour.AutoSize = true;
@@ -449,6 +477,7 @@
             this.btnHerbcake.TabIndex = 20;
             this.btnHerbcake.Text = "Herbcake";
             this.btnHerbcake.UseVisualStyleBackColor = true;
+            this.btnHerbcake.Click += new System.EventHandler(this.btnHerbcake_Click);
             // 
             // label10
             // 
@@ -467,6 +496,7 @@
             this.btnHotchpotch.TabIndex = 18;
             this.btnHotchpotch.Text = "Hotchpotch";
             this.btnHotchpotch.UseVisualStyleBackColor = true;
+            this.btnHotchpotch.Click += new System.EventHandler(this.btnHotchpotch_Click);
             // 
             // label9
             // 
@@ -485,6 +515,7 @@
             this.btnFrieten.TabIndex = 16;
             this.btnFrieten.Text = "Frieten";
             this.btnFrieten.UseVisualStyleBackColor = true;
+            this.btnFrieten.Click += new System.EventHandler(this.btnFrieten_Click);
             // 
             // label8
             // 
@@ -503,6 +534,7 @@
             this.btnSimmer.TabIndex = 14;
             this.btnSimmer.Text = "simmer trout";
             this.btnSimmer.UseVisualStyleBackColor = true;
+            this.btnSimmer.Click += new System.EventHandler(this.btnSimmer_Click);
             // 
             // label7
             // 
@@ -521,6 +553,7 @@
             this.btnWaffles.TabIndex = 12;
             this.btnWaffles.Text = "Waffles";
             this.btnWaffles.UseVisualStyleBackColor = true;
+            this.btnWaffles.Click += new System.EventHandler(this.btnWaffles_Click);
             // 
             // label6
             // 
@@ -539,6 +572,7 @@
             this.btnCalamares.TabIndex = 10;
             this.btnCalamares.Text = "Calamares";
             this.btnCalamares.UseVisualStyleBackColor = true;
+            this.btnCalamares.Click += new System.EventHandler(this.btnCalamares_Click);
             // 
             // label5
             // 
@@ -557,6 +591,7 @@
             this.btnFishPasta.TabIndex = 8;
             this.btnFishPasta.Text = "Fish Pasta";
             this.btnFishPasta.UseVisualStyleBackColor = true;
+            this.btnFishPasta.Click += new System.EventHandler(this.btnFishPasta_Click);
             // 
             // label4
             // 
@@ -575,6 +610,7 @@
             this.btnMeatballs.TabIndex = 6;
             this.btnMeatballs.Text = "Meatballs";
             this.btnMeatballs.UseVisualStyleBackColor = true;
+            this.btnMeatballs.Click += new System.EventHandler(this.btnMeatballs_Click);
             // 
             // label3
             // 
@@ -593,6 +629,7 @@
             this.btnBBQ.TabIndex = 4;
             this.btnBBQ.Text = "BBQ";
             this.btnBBQ.UseVisualStyleBackColor = true;
+            this.btnBBQ.Click += new System.EventHandler(this.btnBBQ_Click);
             // 
             // label2
             // 
@@ -619,34 +656,6 @@
             this.lbCooking.Name = "lbCooking";
             this.lbCooking.Size = new System.Drawing.Size(120, 212);
             this.lbCooking.TabIndex = 0;
-            // 
-            // lbShips
-            // 
-            this.lbShips.FormattingEnabled = true;
-            this.lbShips.Location = new System.Drawing.Point(96, 15);
-            this.lbShips.Name = "lbShips";
-            this.lbShips.Size = new System.Drawing.Size(138, 43);
-            this.lbShips.TabIndex = 23;
-            // 
-            // btnminship
-            // 
-            this.btnminship.Location = new System.Drawing.Point(9, 94);
-            this.btnminship.Name = "btnminship";
-            this.btnminship.Size = new System.Drawing.Size(225, 23);
-            this.btnminship.TabIndex = 24;
-            this.btnminship.Text = "subtract one ship";
-            this.btnminship.UseVisualStyleBackColor = true;
-            this.btnminship.Click += new System.EventHandler(this.btnminship_Click);
-            // 
-            // btnaddship
-            // 
-            this.btnaddship.Location = new System.Drawing.Point(9, 67);
-            this.btnaddship.Name = "btnaddship";
-            this.btnaddship.Size = new System.Drawing.Size(225, 23);
-            this.btnaddship.TabIndex = 25;
-            this.btnaddship.Text = "Add ship to fish";
-            this.btnaddship.UseVisualStyleBackColor = true;
-            this.btnaddship.Click += new System.EventHandler(this.btnaddship_Click);
             // 
             // GameTime
             // 
@@ -675,7 +684,7 @@
             this.Controls.Add(this.gbstatistics);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMastopia";
-            this.Text = "l";
+            this.Text = "MAStopia";
             this.Load += new System.EventHandler(this.frmMastopia_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

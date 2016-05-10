@@ -17,15 +17,16 @@ namespace MP_Gamelogic_wfa
         {
             InitializeComponent();
         }
-        PlayerRecources Precource;
+        PlayerRecources Presource;
         SystemRecources Srecource;
         Farm farm;
         Harbour harbour;
-        private int Ticks;
+        Restorant resto;
+        public int Ticks;
         
         private void btnvegie_Click(object sender, EventArgs e)
         {
-            Precource.Vegies += Srecource.AddVegies;
+            Presource.Vegies += Srecource.AddVegies;
             FillRecorceLbl();
         }
 
@@ -33,45 +34,42 @@ namespace MP_Gamelogic_wfa
 
         private void btngrains_Click(object sender, EventArgs e)
         {
-            Precource.Grains += Srecource.AddGrains;
+            Presource.Grains += Srecource.AddGrains;
             FillRecorceLbl();
-
         }
 
         private void btnfish_Click(object sender, EventArgs e)
         {
-            Precource.Fish += Srecource.Fish;
+            Presource.Fish += Srecource.Fish;
             FillRecorceLbl();
-
         }
 
         private void btnmeat_Click(object sender, EventArgs e)
         {
-            Precource.Meat += Srecource.AddMeat;
+            Presource.Meat += Srecource.AddMeat;
             FillRecorceLbl();
-
         }
 
         private void BtnoneH_Click(object sender, EventArgs e)
         {
-            Precource.Vegies += Srecource.AddVegies;
+            Presource.Vegies += Srecource.AddVegies;
           
 
-            Precource.Grains += Srecource.AddGrains;
+            Presource.Grains += Srecource.AddGrains;
            
 
-            Precource.Fish += Srecource.Fish;
+            Presource.Fish += Srecource.Fish;
            
 
-            Precource.Meat += Srecource.AddMeat;
+            Presource.Meat += Srecource.AddMeat;
             FillRecorceLbl();
         }
         public void FillRecorceLbl()
         {
-            lblvegie.Text = (Precource.Vegies + " / 100");
-            lblgrains.Text = (Precource.Grains + " / 100");
-            lblfish.Text = (Precource.Fish + " / 100");
-            lblmeat.Text = (Precource.Meat + " / 100");
+            lblvegie.Text = (Presource.Vegies + " / 100");
+            lblgrains.Text = (Presource.Grains + " / 100");
+            lblfish.Text = (Presource.Fish + " / 100");
+            lblmeat.Text = (Presource.Meat + " / 100");
         }
         private void btnTileVegie_Click(object sender, EventArgs e)
         {
@@ -103,7 +101,7 @@ namespace MP_Gamelogic_wfa
 
         private void frmMastopia_Load_1(object sender, EventArgs e)
         {
-            Precource = new PlayerRecources();
+            Presource = new PlayerRecources();
 
             Srecource = new SystemRecources();
   
@@ -115,7 +113,7 @@ namespace MP_Gamelogic_wfa
             farm.VegieTile = 2;
             filllbTiles();
             harbour = new Harbour();
-
+            resto = new Restorant();
           
         }
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -198,18 +196,161 @@ namespace MP_Gamelogic_wfa
             lblGameTime.Text =("GameTime : " + Ticks);
             if (Ticks%12==0)
             {
-                Precource.Grains += farm.GrainTile;
-                Precource.Vegies += farm.VegieTile;
+                Presource.Grains += farm.GrainTile;
+                Presource.Vegies += farm.VegieTile;
             }
             if (Ticks%24==0)
             {
-                Precource.Meat += farm.MeatTile;
+                Presource.Meat += farm.MeatTile;
             }
             if (Ticks%120==0 && harbour.UsedShips!=0)
             {
-                Precource.Fish += (harbour.ShipCapacity*harbour.UsedShips);
+                Presource.Fish += (harbour.ShipCapacity*harbour.UsedShips);
+            }
+           
+            if (Presource.NextTick>0)
+            {
+                Presource.NextTick--;
             }
             FillRecorceLbl();
+            FillCookList();
+            ClearLists();
+
+        }
+        private void FillCookList()
+        {
+            ClearLists();
+            lbCooking.Items.Clear();
+            lbCooking.Items.Add("BBQ : " + resto.bbq.Count());
+            lbCooking.Items.Add("Calamaris : " + resto.calamares.Count());
+            lbCooking.Items.Add("Waffles : " + resto.waffel.Count());
+            lbCooking.Items.Add("Friet : " + resto.friet.Count());
+            lbCooking.Items.Add("MeatBall : " + resto.meatBall.Count());
+            lbCooking.Items.Add("SimmerTrout : " + resto.simerTrout.Count());
+
+            lbCooking.Items.Add("Total Time : " + Presource.NextTick);
+
+        }
+        private void ClearLists()
+        {
+            if (resto.bbq.Count() != 0)
+            {
+                BBQ temp = new BBQ();
+                foreach (var BBQ in resto.bbq)
+                {
+                    if (BBQ.endTick <= Ticks)
+                    {
+                        temp = BBQ;
+                    }
+                }
+                resto.bbq.Remove(temp);
+            }
+            if (resto.calamares.Count()!=0)
+            {
+                Calamares temp = new Calamares();
+                foreach (var calamaris in resto.calamares)
+                {
+                    if (calamaris.endTick <= Ticks)
+                    {
+                        temp = calamaris;
+                    }
+                  
+                }
+                resto.calamares.Remove(temp);
+            }
+            if (resto.waffel.Count() != 0)
+            {
+                Waffels temp = new Waffels();
+                foreach (var waffel in resto.waffel)
+                {
+                    if (waffel.endTick <= Ticks)
+                    {
+                        temp = waffel;
+                    }
+                }
+                resto.waffel.Remove(temp);
+            }
+            if (resto.friet.Count() != 0)
+            {
+                Frieten temp = new Frieten();
+                foreach (var friet in resto.friet)
+                {
+                    if (friet.endTick <= Ticks)
+                    {
+                        temp = friet;
+                    }
+                }
+                resto.friet.Remove(temp);
+            }
+            if (resto.simerTrout.Count() != 0)
+            {
+                SimmerTrout temp = new SimmerTrout();
+                foreach (var simmer in resto.simerTrout)
+                {
+                    if (simmer.endTick <= Ticks)
+                    {
+                        temp = simmer;
+                    }
+                }
+                resto.simerTrout.Remove(temp);
+            }
+            if (resto.meatBall.Count() != 0)
+            {
+                MeatBalls temp = new MeatBalls();
+                foreach (var meat in resto.meatBall)
+                {
+                    if (meat.endTick <= Ticks)
+                    {
+                        temp = meat;
+                    }
+                }
+                resto.meatBall.Remove(temp);
+            }
+        }
+        private void btnBBQ_Click(object sender, EventArgs e)
+        {
+            resto.AddBBQ(Ticks, Presource);
+        }
+
+        private void btnCalamares_Click(object sender, EventArgs e)
+        {
+            resto.AddCalamares(Ticks, Presource);
+        }
+
+        private void btnWaffles_Click(object sender, EventArgs e)
+        {
+            resto.AddWaffles(Ticks, Presource);
+
+        }
+
+        private void btnFrieten_Click(object sender, EventArgs e)
+        {
+            resto.AddFrieten(Ticks, Presource);
+
+        }
+
+        private void btnMeatballs_Click(object sender, EventArgs e)
+        {
+            resto.AddMeatBalls(Ticks, Presource);
+        }
+
+        private void btnSimmer_Click(object sender, EventArgs e)
+        {
+            resto.addSimmerTrout(Ticks, Presource);
+        }
+
+        private void btnHerbcake_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHotchpotch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFishPasta_Click(object sender, EventArgs e)
+        {
 
         }
     }
