@@ -106,7 +106,6 @@ namespace MP_Gamelogic_wfa
             Srecource = new SystemRecources();
   
             farm = new Farm();
-            farm.Level = 0;
             farm.TilesAvailable = 0;
             farm.GrainTile = 2;
             farm.MeatTile = 2;
@@ -114,6 +113,7 @@ namespace MP_Gamelogic_wfa
             filllbTiles();
             harbour = new Harbour();
             resto = new Restorant();
+            Presource.Money = 130;
           
         }
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -155,7 +155,7 @@ namespace MP_Gamelogic_wfa
 
         private void btnFarmUpgrade_Click(object sender, EventArgs e)
         {
-
+            farm.Upgradelvl(Presource);
         }
 
         private void btnaddship_Click(object sender, EventArgs e)
@@ -245,7 +245,9 @@ namespace MP_Gamelogic_wfa
         {
             lblxp.Text = "Player XP : " + Presource.XP+ " / "+Presource.NextLevel;
             lblMoney.Text = "Money : "+ Presource.Money;
-            
+            lbllevel.Text = "Level : " + Presource.PLayerLevel;
+            lblLvlResto.Text = "LVL : " + resto.RestoLevel;
+            lblLvlFarm.Text = "LvL : " + farm.FarmLevel;
         }
         private void ClearLists()
         {
@@ -424,6 +426,16 @@ namespace MP_Gamelogic_wfa
         {
             resto.AddFishPasta(Ticks, Presource);
 
+        }
+
+        private void btnUpgradeResto_Click(object sender, EventArgs e)
+        {
+            resto.Upgradelvl(Presource);
+        }
+
+        private void btnUpgradeHarbour_Click(object sender, EventArgs e)
+        {
+            harbour.Upgradelvl(Presource);
         }
     }
 }

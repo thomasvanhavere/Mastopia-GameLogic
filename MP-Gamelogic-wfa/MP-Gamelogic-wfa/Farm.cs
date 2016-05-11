@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MP_Gamelogic_wfa
 {
@@ -17,7 +18,6 @@ namespace MP_Gamelogic_wfa
         private int meatTile;
         private int vegieTile;
         private int grainTile;
-        private int level;
         private int tileAvailable;
 
         public int MeatTile
@@ -35,56 +35,12 @@ namespace MP_Gamelogic_wfa
             get { return grainTile; }
             set { grainTile = value; }
         }
-        public int Level
-        {
-            get { return level; }
-            set { level = value; }
-        }
         public int TilesAvailable
         {
             get { return tileAvailable; }
             set { tileAvailable = value; }
         }
-        //public int getAmountOfTiles()
-        //{
-        //    if (level == 0)
-        //    {
-        //        tileAvailable = 6;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 1)
-        //    {
-        //        tileAvailable = 8;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 2)
-        //    {
-        //        tileAvailable = 10;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 3)
-        //    {
-        //        tileAvailable = 12;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 4)
-        //    {
-        //        tileAvailable = 14;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 5)
-        //    {
-        //        tileAvailable = 16;
-        //        return tileAvailable;
-        //    }
-        //    else if (level == 6)
-        //    {
-        //        tileAvailable = 18;
-        //        return tileAvailable;
-        //    }
-        //    else
-        //        return 18;
-        //}
+        public int FarmLevel { get; set; }
         public void addTile(Tiles type)
         {
             if(type == Tiles.grain && tileAvailable!=0)
@@ -103,6 +59,19 @@ namespace MP_Gamelogic_wfa
                 vegieTile++;
                 tileAvailable--;
                 
+            }
+        }
+        public void Upgradelvl(PlayerRecources Presource)
+        {
+            //=100*Level
+            if (Presource.Money >= (FarmLevel * 100))
+            {
+                FarmLevel++;
+                Presource.Money -= (FarmLevel * 100);
+            }
+            else
+            {
+                MessageBox.Show("You do not Have enough moneyzzz", "No Moneyzz ??", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

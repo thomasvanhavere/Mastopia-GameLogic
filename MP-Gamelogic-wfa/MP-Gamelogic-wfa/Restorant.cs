@@ -20,11 +20,12 @@ namespace MP_Gamelogic_wfa
 
         public List<HotchPotch> hotchPotch = new List<HotchPotch>();
         public List<FishPasta> fishPasta = new List<FishPasta>();
+        public int RestoLevel { get; set; }
         public void AddBBQ(int Tick, PlayerRecources Presource)
         {
             if (Presource.Meat>=5)
             {
-                bbq.Add(new BBQ(Tick,Presource));
+                bbq.Add(new BBQ(Tick,Presource, RestoLevel));
                 Presource.Meat -= 5;
             }
         }
@@ -32,7 +33,7 @@ namespace MP_Gamelogic_wfa
         {
             if (Presource.Fish>=5)
             {
-                calamares.Add(new Calamares(Tick, Presource));
+                calamares.Add(new Calamares(Tick, Presource, RestoLevel));
                 Presource.Fish -= 5;
             }
         }
@@ -40,7 +41,7 @@ namespace MP_Gamelogic_wfa
         {
             if (Presource.Vegies >= 5)
             {
-                friet.Add(new Frieten(Tick, Presource));
+                friet.Add(new Frieten(Tick, Presource, RestoLevel));
                 Presource.Vegies -= 5;
             }
         }
@@ -48,7 +49,7 @@ namespace MP_Gamelogic_wfa
         {
             if (Presource.Grains >= 5)
             {
-                waffel.Add(new Waffels(Tick, Presource));
+                waffel.Add(new Waffels(Tick, Presource, RestoLevel));
                 Presource.Grains -= 5;
             }
         }
@@ -56,7 +57,7 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Meat >= 5) && (Presource.Vegies>=5))
             {
-                meatBall.Add(new MeatBalls(Tick, Presource));
+                meatBall.Add(new MeatBalls(Tick, Presource, RestoLevel));
                 Presource.Meat -= 5;
                 Presource.Vegies -= 5;
             }
@@ -65,7 +66,7 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Fish >= 15) && (Presource.Vegies >= 10))
             {
-                simerTrout.Add(new SimmerTrout(Tick, Presource));
+                simerTrout.Add(new SimmerTrout(Tick, Presource, RestoLevel));
                 Presource.Fish -= 15;
                 Presource.Vegies -= 10;
             }
@@ -74,7 +75,7 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Vegies >= 10) && (Presource.Grains >= 10))
             {
-                herbCake.Add(new HerbCake(Tick, Presource));
+                herbCake.Add(new HerbCake(Tick, Presource, RestoLevel));
                 Presource.Grains -= 10;
                 Presource.Vegies -= 10;
             }
@@ -83,7 +84,7 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Meat >= 10) && (Presource.Vegies >= 8)&&(Presource.Grains>=5))
             {
-                hotchPotch.Add(new HotchPotch(Tick, Presource));
+                hotchPotch.Add(new HotchPotch(Tick, Presource, RestoLevel));
                 Presource.Meat -= 10;
                 Presource.Vegies -= 8;
                 Presource.Grains -= 5;
@@ -93,10 +94,23 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Fish >= 15) && (Presource.Vegies >= 5)&&(Presource.Grains>=10))
             {
-                fishPasta.Add(new FishPasta(Tick, Presource));
+                fishPasta.Add(new FishPasta(Tick, Presource, RestoLevel));
                 Presource.Fish -= 15;
                 Presource.Vegies -= 5;
                 Presource.Grains -= 10;
+            }
+        }
+        public void Upgradelvl(PlayerRecources Presource)
+        {
+            //=130*Level
+            if (Presource.Money>=(RestoLevel*130))
+            {
+                RestoLevel++;
+                Presource.Money -= (RestoLevel * 130);
+            }
+            else
+            {
+                MessageBox.Show("You do not Have enough moneyzzz", "No Moneyzz ??", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

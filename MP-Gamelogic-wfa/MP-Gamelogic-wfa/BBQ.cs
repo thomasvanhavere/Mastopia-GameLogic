@@ -29,19 +29,29 @@ namespace MP_Gamelogic_wfa
             get { return waste; }
             set { waste = value; }
         }
-        
+
+        private int totalResource = 5;
+
+        public int TotalRecource
+        {
+            get { return totalResource; }
+            set { totalResource = value; }
+        }
+
 
         public int endTick { get; set; }
 
-        public BBQ(int Tick, PlayerRecources p)
+        public BBQ(int Tick, PlayerRecources p, int restoLevel)
         {
-            if (p.NextTick==0)
+            //Tijd =(SOM(resources)/2)*2,25
+            if (p.NextTick == 0)
             {
                 p.NextTick = Tick;
             }
-            p.NextTick += 6;
+            double Time = ((totalResource / 2) * (2.25 - (restoLevel * 0.15))) + 1;
+            p.NextTick += (int)Time;
             this.endTick = (p.NextTick);
-          
+
         }
         public BBQ()
         {

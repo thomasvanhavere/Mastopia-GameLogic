@@ -29,17 +29,25 @@ namespace MP_Gamelogic_wfa
             get { return waste; }
             set { waste = value; }
         }
+        private int totalResource = 20;
 
+        public int TotalRecource
+        {
+            get { return totalResource; }
+            set { totalResource = value; }
+        }
 
         public int endTick { get; set; }
 
-        public MeatBalls(int Tick, PlayerRecources p)
+        public MeatBalls(int Tick, PlayerRecources p, int restoLevel)
         {
+            //Tijd =(SOM(resources)/2)*2,25
             if (p.NextTick == 0)
             {
                 p.NextTick = Tick;
             }
-            p.NextTick += 23;
+            double Time = ((totalResource / 2) * (2.25 - (restoLevel * 0.15))) + 1;
+            p.NextTick += (int)Time;
             this.endTick = (p.NextTick);
 
         }
