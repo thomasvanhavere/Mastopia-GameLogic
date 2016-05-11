@@ -93,7 +93,7 @@ namespace MP_Gamelogic_wfa
         {
             if ((Presource.Fish >= 15) && (Presource.Vegies >= 5)&&(Presource.Grains>=10))
             {
-                simerTrout.Add(new SimmerTrout(Tick, Presource));
+                fishPasta.Add(new FishPasta(Tick, Presource));
                 Presource.Fish -= 15;
                 Presource.Vegies -= 5;
                 Presource.Grains -= 10;

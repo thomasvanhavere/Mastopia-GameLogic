@@ -12,7 +12,6 @@ namespace MP_Gamelogic_wfa
         private int meat;
         private int grains;
         private int fish;
-        private int money;
         public int Vegies
         {
             get { return vegies; }
@@ -33,12 +32,9 @@ namespace MP_Gamelogic_wfa
             get { return fish; }
             set { fish = value; }
         }
-        public int Money {
-            get { return money; }
-            set { money = value; }
-        }
+        public int Money { get; set; }
+        public int XP { get; set; }
 
         public int NextTick { get; set; }
-
     }
 }

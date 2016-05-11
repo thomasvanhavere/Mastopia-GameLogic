@@ -23,7 +23,7 @@ namespace MP_Gamelogic_wfa
         Harbour harbour;
         Restorant resto;
         public int Ticks;
-        
+        int totalrecp;
         private void btnvegie_Click(object sender, EventArgs e)
         {
             Presource.Vegies += Srecource.AddVegies;
@@ -212,10 +212,11 @@ namespace MP_Gamelogic_wfa
             {
                 Presource.NextTick--;
             }
+          
             FillRecorceLbl();
             FillCookList();
+            fillStatistics();
             ClearLists();
-
         }
         private void FillCookList()
         {
@@ -228,11 +229,22 @@ namespace MP_Gamelogic_wfa
             lbCooking.Items.Add("MeatBall : " + resto.meatBall.Count());
             lbCooking.Items.Add("SimmerTrout : " + resto.simerTrout.Count());
             lbCooking.Items.Add("HerbCake : " + resto.herbCake.Count());
-            lbCooking.Items.Add("FishPAsta : " + resto.fishPasta.Count());
+            lbCooking.Items.Add("FishPasta : " + resto.fishPasta.Count());
             lbCooking.Items.Add("HotchPotch : " + resto.hotchPotch.Count());
+            totalrecp = resto.bbq.Count() + resto.calamares.Count() + resto.waffel.Count() +
+                resto.friet.Count() + resto.meatBall.Count() + resto.simerTrout.Count() +
+                resto.herbCake.Count() + resto.hotchPotch.Count() + resto.fishPasta.Count();
+            lbCooking.Items.Add("");
 
+            lbCooking.Items.Add("Total recep : " +totalrecp);
             lbCooking.Items.Add("Total Time : " + Presource.NextTick);
 
+        }
+
+        private void fillStatistics()
+        {
+            lblxp.Text = "Player XP : " + Presource.XP;
+            lblMoney.Text = "Money : "+ Presource.Money;
         }
         private void ClearLists()
         {
@@ -244,6 +256,8 @@ namespace MP_Gamelogic_wfa
                     if (BBQ.endTick <= Ticks)
                     {
                         temp = BBQ;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
                     }
                 }
                 resto.bbq.Remove(temp);
@@ -256,6 +270,8 @@ namespace MP_Gamelogic_wfa
                     if (calamaris.endTick <= Ticks)
                     {
                         temp = calamaris;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
                     }
                   
                 }
@@ -269,6 +285,8 @@ namespace MP_Gamelogic_wfa
                     if (waffel.endTick <= Ticks)
                     {
                         temp = waffel;
+                        Presource.Money += waffel.Money;
+                        Presource.XP += waffel.Experience;
                     }
                 }
                 resto.waffel.Remove(temp);
@@ -281,6 +299,8 @@ namespace MP_Gamelogic_wfa
                     if (friet.endTick <= Ticks)
                     {
                         temp = friet;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
                     }
                 }
                 resto.friet.Remove(temp);
@@ -293,6 +313,8 @@ namespace MP_Gamelogic_wfa
                     if (simmer.endTick <= Ticks)
                     {
                         temp = simmer;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
                     }
                 }
                 resto.simerTrout.Remove(temp);
@@ -305,10 +327,55 @@ namespace MP_Gamelogic_wfa
                     if (meat.endTick <= Ticks)
                     {
                         temp = meat;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
                     }
                 }
                 resto.meatBall.Remove(temp);
             }
+            if (resto.herbCake.Count() != 0)
+            {
+                HerbCake temp = new HerbCake();
+                foreach (var Herb in resto.herbCake)
+                {
+                    if (Herb.endTick <= Ticks)
+                    {
+                        temp = Herb;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
+                    }
+                }
+                resto.herbCake.Remove(temp);
+            }
+            if (resto.hotchPotch.Count() != 0)
+            {
+                HotchPotch temp = new HotchPotch();
+                foreach (var Hot in resto.hotchPotch)
+                {
+                    if (Hot.endTick <= Ticks)
+                    {
+                        temp = Hot;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
+                    }
+                }
+                resto.hotchPotch.Remove(temp);
+            }
+            if (resto.fishPasta.Count() != 0)
+            {
+                FishPasta temp = new FishPasta();
+                foreach (var fish in resto.fishPasta)
+                {
+                    if (fish.endTick <= Ticks)
+                    {
+                        temp = fish;
+                        Presource.Money += temp.Money;
+                        Presource.XP += temp.Experience;
+                    }
+                }
+                resto.fishPasta.Remove(temp);
+            }
+
         }
         private void btnBBQ_Click(object sender, EventArgs e)
         {

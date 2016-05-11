@@ -44,7 +44,6 @@
             this.lblplayer = new System.Windows.Forms.Label();
             this.lblfaction = new System.Windows.Forms.Label();
             this.lblxp = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbfarm = new System.Windows.Forms.GroupBox();
             this.lblLvlFarm = new System.Windows.Forms.Label();
             this.btnRemoveTile = new System.Windows.Forms.Button();
@@ -86,6 +85,7 @@
             this.lbCooking = new System.Windows.Forms.ListBox();
             this.GameTime = new System.Windows.Forms.Timer(this.components);
             this.lblGameTime = new System.Windows.Forms.Label();
+            this.lblMoney = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbstatistics.SuspendLayout();
             this.gbfarm.SuspendLayout();
@@ -199,11 +199,11 @@
             // 
             // gbstatistics
             // 
+            this.gbstatistics.Controls.Add(this.lblMoney);
             this.gbstatistics.Controls.Add(this.lbllevel);
             this.gbstatistics.Controls.Add(this.lblplayer);
             this.gbstatistics.Controls.Add(this.lblfaction);
             this.gbstatistics.Controls.Add(this.lblxp);
-            this.gbstatistics.Controls.Add(this.label1);
             this.gbstatistics.Location = new System.Drawing.Point(12, 13);
             this.gbstatistics.Name = "gbstatistics";
             this.gbstatistics.Size = new System.Drawing.Size(890, 41);
@@ -232,7 +232,7 @@
             // lblfaction
             // 
             this.lblfaction.AutoSize = true;
-            this.lblfaction.Location = new System.Drawing.Point(431, 16);
+            this.lblfaction.Location = new System.Drawing.Point(342, 16);
             this.lblfaction.Name = "lblfaction";
             this.lblfaction.Size = new System.Drawing.Size(39, 13);
             this.lblfaction.TabIndex = 2;
@@ -241,20 +241,11 @@
             // lblxp
             // 
             this.lblxp.AutoSize = true;
-            this.lblxp.Location = new System.Drawing.Point(43, 16);
+            this.lblxp.Location = new System.Drawing.Point(24, 16);
             this.lblxp.Name = "lblxp";
             this.lblxp.Size = new System.Drawing.Size(13, 13);
             this.lblxp.TabIndex = 1;
             this.lblxp.Text = "0";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "xp";
             // 
             // gbfarm
             // 
@@ -672,6 +663,15 @@
             this.lblGameTime.TabIndex = 5;
             this.lblGameTime.Text = "GameTime :";
             // 
+            // lblMoney
+            // 
+            this.lblMoney.AutoSize = true;
+            this.lblMoney.Location = new System.Drawing.Point(564, 16);
+            this.lblMoney.Name = "lblMoney";
+            this.lblMoney.Size = new System.Drawing.Size(44, 13);
+            this.lblMoney.TabIndex = 5;
+            this.lblMoney.Text = "Moneys";
+            // 
             // frmMastopia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,7 +717,6 @@
         private System.Windows.Forms.Label lblplayer;
         private System.Windows.Forms.Label lblfaction;
         private System.Windows.Forms.Label lblxp;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbfarm;
         private System.Windows.Forms.Button btnRemoveTile;
         private System.Windows.Forms.Button btnTileMeat;
@@ -760,6 +759,7 @@
         private System.Windows.Forms.ListBox lbShips;
         private System.Windows.Forms.Timer GameTime;
         private System.Windows.Forms.Label lblGameTime;
+        private System.Windows.Forms.Label lblMoney;
     }
 }
 
