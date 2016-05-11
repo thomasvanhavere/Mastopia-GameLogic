@@ -227,6 +227,9 @@ namespace MP_Gamelogic_wfa
             lbCooking.Items.Add("Friet : " + resto.friet.Count());
             lbCooking.Items.Add("MeatBall : " + resto.meatBall.Count());
             lbCooking.Items.Add("SimmerTrout : " + resto.simerTrout.Count());
+            lbCooking.Items.Add("HerbCake : " + resto.herbCake.Count());
+            lbCooking.Items.Add("FishPAsta : " + resto.fishPasta.Count());
+            lbCooking.Items.Add("HotchPotch : " + resto.hotchPotch.Count());
 
             lbCooking.Items.Add("Total Time : " + Presource.NextTick);
 
@@ -341,16 +344,17 @@ namespace MP_Gamelogic_wfa
 
         private void btnHerbcake_Click(object sender, EventArgs e)
         {
-
+            resto.AddHerbCake(Ticks, Presource);
         }
 
         private void btnHotchpotch_Click(object sender, EventArgs e)
         {
-
+            resto.AddHotchPotch(Ticks, Presource);
         }
 
         private void btnFishPasta_Click(object sender, EventArgs e)
         {
+            resto.AddFishPasta(Ticks, Presource);
 
         }
     }

@@ -16,7 +16,10 @@ namespace MP_Gamelogic_wfa
 
         public List<MeatBalls> meatBall = new List<MeatBalls>();
         public List<SimmerTrout> simerTrout = new List<SimmerTrout>();
+        public List<HerbCake> herbCake = new List<HerbCake>();
 
+        public List<HotchPotch> hotchPotch = new List<HotchPotch>();
+        public List<FishPasta> fishPasta = new List<FishPasta>();
         public void AddBBQ(int Tick, PlayerRecources Presource)
         {
             if (Presource.Meat>=5)
@@ -51,10 +54,10 @@ namespace MP_Gamelogic_wfa
         }
         public void AddMeatBalls(int Tick, PlayerRecources Presource)
         {
-            if ((Presource.Meat >= 15) && (Presource.Vegies>=5))
+            if ((Presource.Meat >= 5) && (Presource.Vegies>=5))
             {
                 meatBall.Add(new MeatBalls(Tick, Presource));
-                Presource.Meat -= 15;
+                Presource.Meat -= 5;
                 Presource.Vegies -= 5;
             }
         }
@@ -64,7 +67,36 @@ namespace MP_Gamelogic_wfa
             {
                 simerTrout.Add(new SimmerTrout(Tick, Presource));
                 Presource.Fish -= 15;
+                Presource.Vegies -= 10;
+            }
+        }
+        public void AddHerbCake(int Tick, PlayerRecources Presource)
+        {
+            if ((Presource.Vegies >= 10) && (Presource.Grains >= 10))
+            {
+                herbCake.Add(new HerbCake(Tick, Presource));
+                Presource.Grains -= 10;
+                Presource.Vegies -= 10;
+            }
+        }
+        public void AddHotchPotch(int Tick, PlayerRecources Presource)
+        {
+            if ((Presource.Meat >= 10) && (Presource.Vegies >= 8)&&(Presource.Grains>=5))
+            {
+                hotchPotch.Add(new HotchPotch(Tick, Presource));
+                Presource.Meat -= 10;
+                Presource.Vegies -= 8;
+                Presource.Grains -= 5;
+            }
+        }
+        public void AddFishPasta(int Tick, PlayerRecources Presource)
+        {
+            if ((Presource.Fish >= 15) && (Presource.Vegies >= 5)&&(Presource.Grains>=10))
+            {
+                simerTrout.Add(new SimmerTrout(Tick, Presource));
+                Presource.Fish -= 15;
                 Presource.Vegies -= 5;
+                Presource.Grains -= 10;
             }
         }
     }
