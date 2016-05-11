@@ -107,7 +107,7 @@ namespace MP_Gamelogic_wfa
   
             farm = new Farm();
             farm.Level = 0;
-            farm.TilesAvailable = 6;
+            farm.TilesAvailable = 0;
             farm.GrainTile = 2;
             farm.MeatTile = 2;
             farm.VegieTile = 2;
@@ -212,7 +212,7 @@ namespace MP_Gamelogic_wfa
             {
                 Presource.NextTick--;
             }
-          
+            Presource.CheckLevel();
             FillRecorceLbl();
             FillCookList();
             fillStatistics();
@@ -243,8 +243,9 @@ namespace MP_Gamelogic_wfa
 
         private void fillStatistics()
         {
-            lblxp.Text = "Player XP : " + Presource.XP;
+            lblxp.Text = "Player XP : " + Presource.XP+ " / "+Presource.NextLevel;
             lblMoney.Text = "Money : "+ Presource.Money;
+            
         }
         private void ClearLists()
         {
