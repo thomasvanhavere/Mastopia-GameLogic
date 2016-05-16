@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseFood.cs" />
     <Compile Include="BBQ.cs" />
     <Compile Include="Calamares.cs" />
     <Compile Include="Farm.cs" />

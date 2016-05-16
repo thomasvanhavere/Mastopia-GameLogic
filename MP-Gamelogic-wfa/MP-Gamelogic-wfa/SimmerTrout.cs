@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace MP_Gamelogic_wfa
 {
-    class SimmerTrout
+    class SimmerTrout : BaseFood
     {
         private int money = 50;
 
-        public int Money
+        public override int Money
         {
             get { return money; }
             set { money = value; }
         }
         private int XP = 31;
 
-        public int Experience
+        public override int Experience
         {
             get { return XP; }
             set { XP = value; }
         }
         private int waste = 2;
 
-        public int Waste
+        public override int Waste
         {
             get { return waste; }
             set { waste = value; }
@@ -32,12 +32,12 @@ namespace MP_Gamelogic_wfa
 
         private int totalResource = 25;
 
-        public int TotalRecource
+        public override int TotalRecource
         {
             get { return totalResource; }
             set { totalResource = value; }
         }
-        public int endTick { get; set; }
+        public override int endTick { get; set; }
 
         public SimmerTrout(int Tick, PlayerRecources p, int restoLevel)
         {

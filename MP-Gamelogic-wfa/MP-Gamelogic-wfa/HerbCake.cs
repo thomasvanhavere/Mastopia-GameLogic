@@ -6,38 +6,38 @@ using System.Threading.Tasks;
 
 namespace MP_Gamelogic_wfa
 {
-    class HerbCake
+    class HerbCake : BaseFood
     {
         private int money = 40;
 
-        public int Money
+        public override int Money
         {
             get { return money; }
             set { money = value; }
         }
         private int XP = 25;
 
-        public int Experience
+        public override int Experience
         {
             get { return XP; }
             set { XP = value; }
         }
         private int waste = 2;
 
-        public int Waste
+        public override int Waste
         {
             get { return waste; }
             set { waste = value; }
         }
 
-        private int totalResource = 20;
+        private  int totalResource = 20;
 
-        public int TotalRecource
+        public override int TotalRecource
         {
             get { return totalResource; }
             set { totalResource = value; }
         }
-        public int endTick { get; set; }
+        public override int endTick { get; set; }
 
         public HerbCake(int Tick, PlayerRecources p, int restoLevel)
         {

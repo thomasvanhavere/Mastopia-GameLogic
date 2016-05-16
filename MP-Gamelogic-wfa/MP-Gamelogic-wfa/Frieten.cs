@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace MP_Gamelogic_wfa
 {
-    class Frieten
+    class Frieten : BaseFood
     {
-        private int money = 10;
+        private  int money = 10;
 
-        public int Money
+        public override int Money
         {
             get { return money; }
             set { money = value; }
         }
         private int XP = 6;
 
-        public int Experience
+        public override int Experience
         {
             get { return XP; }
             set { XP = value; }
         }
         private int waste = 1;
 
-        public int Waste
+        public override int Waste
         {
             get { return waste; }
             set { waste = value; }
@@ -32,12 +32,12 @@ namespace MP_Gamelogic_wfa
 
         private int totalResource = 5;
 
-        public int TotalRecource
+        public override int TotalRecource
         {
             get { return totalResource; }
             set { totalResource = value; }
         }
-        public int endTick { get; set; }
+        public override int endTick { get; set; }
 
         public Frieten(int Tick, PlayerRecources p, int restoLevel)
         {
